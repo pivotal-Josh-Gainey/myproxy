@@ -1,0 +1,14 @@
+---
+applications:
+- name: myproxy
+  buildpacks:
+  - nginx_buildpack
+  stack: cflinuxfs3
+  processes:
+  - type: web
+    instances: 1
+    memory: 512M
+    disk_quota: 1024M
+    health-check-type: port
+  env:
+    DESTINATION_HOST: "http://destination-app.apps.internal:8080"
